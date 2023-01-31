@@ -421,4 +421,4 @@ Node、Express、axios、j_websocket、json-server、jwt
 * j_websocket 封装
 * 各种中间件封装
 ### 截图
-![alt 截图](https://web-1301368439.cos.ap-beijing.myqcloud.com/projectCover/20230131-175542.gif)
+![alt 截图](screenshot/20230131-180055.gif)
