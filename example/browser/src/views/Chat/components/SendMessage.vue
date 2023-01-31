@@ -32,8 +32,8 @@ const COS = require('cos-js-sdk-v5')
 
 // SECRETID 和 SECRETKEY请登录 https://console.cloud.tencent.com/cam/capi 进行查看和管理
 const cos = new COS({
-  SecretId: 'AKIDGLAi01lEQM2ScV7SWJq65oGSN2Q2NRFm',
-  SecretKey: 'IJ5ZmiSv72g4B1atvf8LHwLTLvEG2Ynl'
+  SecretId: '',
+  SecretKey: ''
 })
 export default {
   name: 'SendMessage',
@@ -132,7 +132,8 @@ export default {
         this.loading = false
         if (err) {
           this.status = 'exception'
-          this.$message.error('上传失败')
+          this.$message.error('请配置腾讯云cos账号信息')
+          // this.$message.error('上传失败')
           return
         }
         this.status = 'success'
