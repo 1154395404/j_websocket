@@ -1,0 +1,23 @@
+{
+  "name": "j_socket",
+  "version": "1.0.0",
+  "description": "一款可以快速现实socket通讯的库",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [
+    "websocket",
+    "j_socket",
+    "socket",
+    "即时通讯"
+  ],
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
+  "browser": {
+    "./lib/index.js": "./lib/index.browser.js",
+    "./lib/index.mjs": "./lib/index.browser.mjs"
+  },
+  "author": "青栀",
+  "license": "ISC"
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            /*margin-top: 200px;*/
+            width: 100px;
+            height: 100px;
+            background: violet;
+
+        }
+        #big-box{
+
+            /*position: absolute;*/
+            /*top: 50%;*/
+            /*left: 50%;*/
+            width: 300px;
+            height: 500px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<div id="big-box">big-box</div>
+<div id="box">box</div>
+
+<script>
+
+  const box = document.querySelector('#box');
+
+  const first = box.getBoundingClientRect();
+
+  // {
+  //   top: 400,
+  //   left: 100,
+  //   width: 200,
+  //   height: 200,
+  //   ...
+  // }
+
+  // ... execute change
+
+  const bigBox = document.querySelector('#big-box');
+
+  const last = bigBox.getBoundingClientRect();
+
+  // {
+  //   top: 0,
+  //   left: 0,
+  //   width: 500,
+  //   height: 500,
+  //   ...
+  // }
+
+  const deltaX = first.left - last.left;
+  const deltaY = first.top - last.top;
+  const deltaW = first.width / last.width;
+  const deltaH = first.height / last.height;
+
+  console.log(deltaX,deltaY)
+  // WAAPI
+
+  box.animate([
+    {
+      transformOrigin: 'top left',
+      transform: `
+      scale(${deltaW}, ${deltaH})
+      translate(${deltaX}px, ${deltaY}px)
+    `
+    },
+    {
+      transformOrigin: 'top left',
+      transform: 'none'
+    }
+  ], {
+    duration: 3000,
+    easing: 'ease-in-out',
+    fill: 'both'
+  });
+  // bigBox.style.display='none'
+</script>
+</body>
+</html>

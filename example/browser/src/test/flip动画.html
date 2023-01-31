@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FLIP</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            width: 1000px;
+            flex-wrap: wrap;
+            display: flex;
+            list-style: none;
+        }
+
+        li {
+            width: 50px;
+            height: 50px;
+            background: #07c160;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin: 10px;
+        }
+
+        .btn-group {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            /*width: 100px;*/
+            /*height: 50px;*/
+
+        }
+
+        .btn-group button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="btn-group">
+    <button id="btn_del">del</button>
+    <button id="btn_add">add</button>
+    <button id="btn_play">play</button>
+</div>
+<ul class="list">
+    <li>001</li>
+    <li>002</li>
+    <li>003</li>
+    <li>004</li>
+    <li>005</li>
+    <li>006</li>
+    <li>007</li>
+    <li>008</li>
+    <li>009</li>
+    <li>010</li>
+    <li>011</li>
+    <li>012</li>
+    <li>013</li>
+    <li>014</li>
+    <li>015</li>
+    <li>016</li>
+    <li>017</li>
+    <li>018</li>
+    <li>019</li>
+    <li>020</li>
+    <li>021</li>
+    <li>022</li>
+    <li>023</li>
+    <li>024</li>
+    <li>025</li>
+    <li>026</li>
+    <li>027</li>
+    <li>028</li>
+    <li>029</li>
+    <li>030</li>
+    <li>031</li>
+    <li>032</li>
+    <li>033</li>
+    <li>034</li>
+    <li>035</li>
+    <li>036</li>
+    <li>037</li>
+    <li>038</li>
+    <li>039</li>
+    <li>040</li>
+    <li>041</li>
+    <li>042</li>
+    <li>043</li>
+    <li>044</li>
+    <li>045</li>
+    <li>046</li>
+    <li>047</li>
+    <li>048</li>
+    <li>049</li>
+    <li>050</li>
+    <li>051</li>
+    <li>052</li>
+    <li>053</li>
+    <li>054</li>
+    <li>055</li>
+    <li>056</li>
+    <li>057</li>
+    <li>058</li>
+    <li>059</li>
+    <li>060</li>
+    <li>061</li>
+    <li>062</li>
+    <li>063</li>
+    <li>064</li>
+    <li>065</li>
+    <li>066</li>
+    <li>067</li>
+    <li>068</li>
+    <li>069</li>
+    <li>070</li>
+    <li>071</li>
+    <li>072</li>
+    <li>073</li>
+    <li>074</li>
+    <li>075</li>
+    <li>076</li>
+    <li>077</li>
+    <li>078</li>
+    <li>079</li>
+    <li>080</li>
+    <li>081</li>
+    <li>082</li>
+    <li>083</li>
+    <li>084</li>
+    <li>085</li>
+    <li>086</li>
+    <li>087</li>
+    <li>088</li>
+    <li>089</li>
+    <li>090</li>
+    <li>091</li>
+    <li>092</li>
+    <li>093</li>
+    <li>094</li>
+    <li>095</li>
+    <li>096</li>
+    <li>097</li>
+    <li>098</li>
+    <li>099</li>
+    <li>100</li>
+</ul>
+<script>
+
+  class Flip {
+    constructor (container) {
+      this.list = container.children || []
+    }
+
+    first () {
+
+      Array.from(this.list).forEach((e) => {
+        // e.style.transition = `none`
+        e.flipStart = e.getBoundingClientRect()
+      })
+    }
+
+    last () {
+
+      Array.from(this.list).forEach((e) => {
+        e.flipEnd = e.getBoundingClientRect()
+      })
+    }
+
+    invert () {
+      // Array.from(this.list).forEach((e) => {
+      //   const dx = e.flipStart?.x - e.flipEnd?.x
+      //   const dy = e.flipStart?.y - e.flipEnd?.y
+      //   console.log(dx, dy)
+      //   e.style.transform = `translate(${dx}px,${dy}px)`
+      //
+      // })
+      Array.from(this.list).forEach((e) => {
+        // 倒置后的位置，虽然图片移动到最新位置了，但你先给我回去，等着我来让你做动画。
+        const invert = {
+          left: e.flipStart?.left - e.flipEnd?.left,
+          top: e.flipStart?.top - e.flipEnd?.top,
+          width: e.flipStart?.width /e.flipEnd?.width,
+          height: e.flipStart?.height / e.flipEnd?.height,
+        }
+
+        const keyframes = [
+          // 初始位置是倒置后的位置
+          {
+            transform: `translate(${invert.left}px, ${invert.top}px) scale(${invert.width},${invert.height})`,
+          },
+          // 图片更新后本来应该在的位置
+          { transform: "translate(0)" },
+        ]
+
+        const options = {
+          duration: 300,
+          easing: "cubic-bezier(0,0,0.32,1)",
+        }
+
+        // 开始运动！
+        const animation = e.animate(keyframes, options)
+
+      })
+
+
+    }
+
+    play () {
+      // requestAnimationFrame(() => {
+      //   Array.from(this.list).forEach((e) => {
+      //     e.style.transition = `1s ease`
+      //     e.style.transform = `none`
+      //   })
+      // })
+    }
+
+  }
+
+  const btn_play = document.querySelector('#btn_play')
+  const btn_del = document.querySelector('#btn_del')
+  const btn_add = document.querySelector('#btn_add')
+  const list = document.querySelector('.list')
+
+  function getRandomInteger (min, max) {
+    return Math.floor(Math.random() * (max + 1)) + min
+  }
+
+  function sleep (timer) {
+    const now = Date.now()
+    while (Date.now() - now <= timer) {
+    }
+  }
+
+  const flip = new Flip(list)
+  btn_play.onclick = function () {
+    flip.first()
+    for (let i = 0; i < list.children.length; i++) {
+      // list.children[getRandomInteger(0, list.children.length - 1)].textContent='ssssssss'
+      list.insertBefore(list.children[getRandomInteger(0, list.children.length - 1)], list.children[getRandomInteger(0, list.children.length - 1)])
+    }
+    // console.log('click')
+    flip.last()
+    flip.invert()
+    flip.play()
+  }
+  btn_add.onclick = function () {
+    flip.first()
+    const li = document.createElement('li')
+    li.style.background = `rgb(${getRandomInteger(0, 255)},${getRandomInteger(0, 255)},${getRandomInteger(0, 255)})`
+    list.insertBefore(li, list.children[getRandomInteger(0, list.children.length - 1)])
+    flip.last()
+    flip.invert()
+    flip.play()
+  }
+  btn_del.onclick = function () {
+    flip.first()
+    list.children[getRandomInteger(0, list.children.length - 1)].remove()
+    flip.last()
+    flip.invert()
+    flip.play()
+  }
+
+  list.onclick=function (e) {
+    if (e.target===this)return
+    flip.first()
+
+   if (!e.target.t){
+     e.target.style.width='300px'
+     e.target.style.height='300px'
+   }else {
+     e.target.style.width='50px'
+     e.target.style.height='50px'
+   }
+    e.target.t=!e.target.t
+    flip.last()
+    flip.invert()
+
+  }
+
+</script>
+</body>
+</html>

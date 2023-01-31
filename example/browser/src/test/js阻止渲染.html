@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<body>
+<h1 id="content">HELLO</h1>
+<button id="btn">change</button>
+<script>
+  function sleep(timer) {
+    const now=Date.now();
+    while (Date.now()-now<=timer){}
+  }
+  btn.onclick=function () {
+    content.textContent='嘻嘻~'+Math.random()
+    content.style.color='red'
+
+    console.log('click')
+    sleep(3000);
+  }
+</script>
+</body>
+</body>
+</html>

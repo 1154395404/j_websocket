@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            /*display: flex;*/
+            flex-wrap: wrap;
+        }
+
+        .list-pic {
+            display: inline-block;
+            position: relative;
+            width: 100px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .list-pic img {
+            /*display: block;*/
+            width: 100%;
+            margin: 0;
+        }
+
+        /* .list-pic:*/
+        .list-pic::before {
+            position: absolute;
+            content: 'preivew';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            width: 100%;
+            height: 99%;
+            background: rgba(0, 0, 0, 0.1);
+            /*top: 0;*/
+            /*left: 0;*/
+            z-index: 1;
+            opacity: 0;
+            /*opacity: 0;*/
+            transition: 0.3s ease;
+
+        }
+
+        .list-pic:hover.list-pic::before {
+            opacity: 1;
+        }
+        .preview{
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            top: 0;
+            left: 0;
+            position: absolute;
+            /*background: rgba(0,0,0,0.3);*/
+            z-index: 999;
+        }
+        .preview img{
+            position: absolute;
+
+        }
+        .preview.active{
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+<div class="list"></div>
+<div class="preview" >
+    <img src="https://dummyimage.com/548x736/8bb1e6" alt="">
+</div>
+<script>
+  let listData = Array(20)
+    .fill()
+    .map(() => {
+      const width = getSize()
+      const height = getSize()
+      return {
+        width,
+        height,
+        bgPic: `https://dummyimage.com/${width}x${height}/${color16()}`
+      }
+    })
+
+  // 获取在 200-900之间的随机整数
+  function getSize () {
+    return Math.round(Math.random() * 700 + 200)
+  }
+
+  // 生成随机 16进制颜色
+  function color16 () {
+    return ('00000' + ((Math.random() * 0x1000000) << 0).toString(16)).substr(-6)
+  }
+
+  function render () {
+    document.querySelector('.list').innerHTML = listData.map((d) => `<div class="list-pic" data-enable="true"><img  src="${d.bgPic}"></div>`).join('')
+
+  }
+
+  render()
+
+  class Flip {
+    constructor () {
+
+    }
+    
+  }
+
+   const  _preview = document.querySelector('.preview')
+  const  _preview_img =_preview.querySelector('img')
+  document.querySelector('.list').onclick = function (e) {
+    const { target } = e
+    if (!target.dataset.enable) {
+      return
+    }
+    const img=target.querySelector('img')
+    const { src }=img
+    const firstInfo=img.getBoundingClientRect()
+
+
+    _preview_img.src=src
+    _preview.classList.add('active')
+    // console.log(firstInfo)
+    const lastInfo=_preview_img.getBoundingClientRect()
+    // _preview.classList.remove('active')
+    const deltaX = firstInfo.left - lastInfo.left;
+    const deltaY = firstInfo.top - lastInfo.top;
+    const deltaW = firstInfo.width / lastInfo.width;
+    const deltaH = firstInfo.height / lastInfo.height;
+
+    // WAAPI
+
+
+    // _preview_img.style.transform= ` translate(${deltaX}px, ${deltaY}px) scale(${deltaW}, ${deltaH})`
+    _preview.classList.add('active')
+    _preview_img.animate([
+      {
+        transformOrigin: 'left top',
+        transform: `
+      translate(${deltaX}px, ${deltaY}px)  scale(${deltaW}, ${deltaH})
+    `
+      },
+      {
+        transformOrigin: 'left top',
+        transform: ' none'
+      }
+    ], {
+      duration: 300,
+      easing: 'ease-in-out',
+      fill: 'both'
+    });
+    console.log(lastInfo.width,lastInfo.height)
+  }
+
+  _preview.onclick=function () {
+    _preview.classList.remove('active')
+    _preview_img.style.transform= ``
+  }
+</script>
+</body>
+</html>

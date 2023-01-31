@@ -1,0 +1,61 @@
+
+* {
+    padding: 0;
+    margin: 0;
+
+    /* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+
+}
+
+body {
+    overflow: hidden;
+}
+
+.ellipsis-1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/**::-webkit-scrollbar {*/
+/*    width: 12px;*/
+/*    height: 12px;*/
+/*}*/
+/**::-webkit-scrollbar-button {*/
+/*    width: 0px;*/
+/*    height: 0px;*/
+/*    display: none;*/
+/*}*/
+/**::-webkit-scrollbar-corner {*/
+/*    background-color: transparent;*/
+/*}*/
+/**::-webkit-scrollbar-thumb {*/
+/*    border: 4px solid rgba(0, 0, 0, 0);*/
+/*    height: 6px;*/
+/*    border-radius: 25px;*/
+/*    background-clip: padding-box;*/
+/*    background-color: rgba(0, 0, 0, 0.30);*/
+/*}*/
+
+
+/* 滚动槽 */
+::-webkit-scrollbar {
+
+    width: 10px;
+    height: 10px;
+    /*height: 600px;*/
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 3px;
+    /*background: rgba(0,0,0,0.06);*/
+    /*-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.08);*/
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+
+}
