@@ -1,5 +1,7 @@
-# J_Socket
+# J_Websocket
 一款可以让你快速开发websocket及时通讯功能的前后端服务库
+
+[>>>Github<<<](https://github.com/1154395404/j_socket)
 ## 目录
 
 * [特性](#特性)
@@ -46,7 +48,7 @@
 ### 浏览器环境
 #### 使用npm方式
 ```shell
-npm install j_socket
+npm install j_websocket
 ```
 #### script 引入
 ```html
@@ -58,7 +60,7 @@ npm install j_socket
 ### Node环境
 #### 使用nmp方式
 ```shell
-npm install j_socket
+npm install j_websocket
 ```
 
 
@@ -67,10 +69,10 @@ npm install j_socket
 #### 实例化_b
 ```javascript
 // npm 方式
-import Socket from 'j_socket'
+import Socket from 'j_websocket'
 const socket = new Socket('http://127.0.0.1')// Node后端监听的ip地址
 // script 引入
-const socket = new J_Socket('http://127.0.0.1')
+const socket = new J_Websocket('http://127.0.0.1')
 ```
 ####  监听websocket是否成功连接 
 ```javascript
@@ -170,7 +172,7 @@ socket.interceptors.response.use((data) => {
 #### 心跳监听
 ```javascript
 // 心跳监听是 即时通讯项目 来保证项目websocket连接稳定性的一种思想
-// 所以 j_socket 也封装了心跳监听 使开发更加高效
+// 所以 j_websocket 也封装了心跳监听 使开发更加高效
 
 // 配置心跳监听时间   入参1：多少毫秒进行一次心跳监听  入参2 多少毫秒后没有响应后 会判定连接断开
 socket.heartbeat.setConfig(5000, 3000)
@@ -203,7 +205,7 @@ socket.reconnect()
 #### 实例化_c
 ```javascript
 const ws = require('ws') //引入原生ws 模块
-const Socket = require('j_socket')// 引入j_socket 模块
+const Socket = require('j_websocket')// 引入j_webocket 模块
 const socket = new Socket(ws)
 ```
 #### 开启websocket服务
@@ -254,7 +256,7 @@ socket.on('exampleType1', (data, options)=>{
 #### 全局广播
 ```javascript
 setInterval(()=>{
-    // 每3秒像前端广播一次消息 与options.emit 作用一样 只不过这个方法挂在在 J_Socket 原型上
+    // 每3秒像前端广播一次消息 与options.emit 作用一样 只不过这个方法挂在在 J_Websocket 原型上
     socket.emit('example1',{name:'青栀'})
 },3000)
 ```
@@ -269,7 +271,7 @@ socket.disconnect((options)=>{
 ### 构建一个基础的websocket服务
 前端
 ```javascript
-import Socket from 'j_socket'
+import Socket from 'j_websocket'
 const socket = new Socket('http://127.0.0.1')
 const subscribeonOnline=socket.on('onOnline',(data)=>{
     // data {msg:'后端收到了 青栀上线 的请求'}
@@ -279,8 +281,8 @@ socket.emit('online',{msg:'我 青栀 上线啦'})
 后端
 ```javascript
 const ws = require('ws')
-const J_Socket = require('j_socket')
-const socket = new J_Socket(ws)
+const Socket = require('j_websocket')
+const socket = new Socket(ws)
 socket.on('online',(data, options)=>{
     // data {msg:'我 青栀 上线啦'}
     options.emit('onOnline',{msg:'后端收到了 青栀上线 的请求'})
@@ -308,7 +310,7 @@ socket.on('getList',(data, options)=>{
 前端 
 ```javascript
 //socket.js
-import Socket from 'j_socket'
+import Socket from 'j_websocket'
 import store from '@/store'
 import router from '@/router'
 const socket = new Socket('http://127.0.0.1')
@@ -353,8 +355,8 @@ module.exports = {
 }
 // socket.js
 const ws = require('ws')
-const J_Socket = require('j_socket')
-const socket = new J_Socket(ws)
+const Socket = require('j_websocket')
+const socket = new Socket(ws)
 const jwt = require('jwt.js')
 socket.use((data, options, next) => {
     const token = data.authorization?.split(' ')[1]
@@ -397,10 +399,10 @@ socket.listen(80, (port) => {
 npm run serve
 ```
 #### 技术栈
-Vue2、axios、j_socket、element-ui、vuex、animate.css
+Vue2、axios、j_websocket、element-ui、vuex、animate.css
 #### 技术要点
 * axios 使用封装
-* J_Socket 使用与封装
+* J_Websocket 使用与封装
 * Flip 动画思想
 * 断线重连
 * 对于各种文件的 发送 与 解析
@@ -412,11 +414,11 @@ Vue2、axios、j_socket、element-ui、vuex、animate.css
 npm run start
 ```
 #### 技术栈
-Node、Express、axios、j_socket、json-server、jwt
+Node、Express、axios、j_websocket、json-server、jwt
 #### 技术要点
 * axios 封装
 * service层 对 json-server 的分层
-* j_socket 封装
+* j_websocket 封装
 * 各种中间件封装
 ### 截图
-![alt 截图](/screenshot/20230131-175542.gif)
+![alt 截图](https://web-1301368439.cos.ap-beijing.myqcloud.com/projectCover/20230131-175542.gif)

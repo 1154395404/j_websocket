@@ -1,6 +1,6 @@
 {
-  "name": "j_socket",
-  "version": "1.0.0",
+  "name": "j_websocket",
+  "version": "1.0.1",
   "description": "一款可以快速现实socket通讯的库",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -8,7 +8,7 @@
   },
   "keywords": [
     "websocket",
-    "j_socket",
+    "j_websocket",
     "socket",
     "即时通讯"
   ],

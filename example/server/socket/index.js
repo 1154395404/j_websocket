@@ -1,7 +1,7 @@
 const ws = require('ws')
-const J_Socket = require('j_socket')
+const Socket = require('j_websocket')
 const jwt_socket = require("../middleware/jwt_socket");
-const socket = new J_Socket(ws)
+const socket = new Socket(ws)
 socket.use(jwt_socket)
 socket.connect(() => {
     console.log('有用户加入了连接')

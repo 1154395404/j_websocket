@@ -19,7 +19,7 @@
     "vue": "^2.6.14",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2",
-    "j_socket": "^1.0.0"
+    "j_websocket": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

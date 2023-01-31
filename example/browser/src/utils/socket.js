@@ -1,5 +1,5 @@
-// import Socket from 'j_socket'
-import Socket from 'j_socket'
+
+import Socket from 'j_websocket'
 import store from '@/store'
 import router from '@/router'
 import { Message } from 'element-ui'
