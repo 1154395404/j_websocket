@@ -2,8 +2,21 @@
   "name": "j_websocket",
   "version": "1.1.0",
   "description": "一款可以快速现实socket通讯的库",
-  "author": "青栀",
   "license": "ISC",
+  "author": {
+    "name": "青栀",
+    "email": "1154395404@qq.com",
+    "url": "https://github.com/1154395404"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1154395404/j_websocket"
+  },
+  "homepage": "https://github.com/1154395404/j_websocket",
+  "bugs": {
+    "url": "https://github.com/1154395404/j_websocket/issues",
+    "email": "1154395404@qq.com"
+  },
   "scripts": {
     "build": "pnpm  -F server -F client build",
     "dev": "pnpm  -F server -F client dev",
