@@ -1,0 +1,4 @@
+{
+  "packages/**/lib/**/*.ts": ["prettier --write", "eslint --fix", "git add"],
+  "*.{json,md}": "prettier --write"
+}

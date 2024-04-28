@@ -1,0 +1,12 @@
+/node_modules
+/package-lock.json
+/pnpm-lock.yaml
+.DS_Store
+/packages/demo/**/*
+# 记得把下面给删掉
+/packages/client
+/packages/server
+
+
+**/*.md
+

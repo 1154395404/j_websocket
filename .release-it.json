@@ -1,0 +1,23 @@
+{
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "angular",
+      "infile": "CHANGELOG.md",
+      "strictSemVer": true
+    }
+  },
+  "git": {
+    "commitMessage": "chore: release v${version}"
+  },
+  "github": {
+    "release": true
+  },
+  "npm": {
+    "publish": true
+  },
+  "hooks": {
+    "after:bump": "pnpm run build",
+    "after:git:release": "echo After git push, before github release",
+    "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+  }
+}

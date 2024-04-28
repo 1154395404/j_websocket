@@ -1,0 +1,269 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "user": [
+    {
+      "name": "zj",
+      "avatar": "default.png",
+      "username": "1154395404",
+      "password": "123456",
+      "createDate": "2024-04-26T03:35:18.515Z",
+      "id": 1
+    },
+    {
+      "name": "zj2",
+      "avatar": "default.png",
+      "username": "11543954042",
+      "password": "11543954042",
+      "createDate": "2024-04-28T09:54:47.970Z",
+      "id": 2
+    }
+  ],
+  "chat": [
+    {
+      "token": "group",
+      "list": [],
+      "lastMessage": {
+        "message": "",
+        "from": "",
+        "to": "",
+        "date": ""
+      },
+      "user": {
+        "1": {
+          "notReadMessageCount": 0
+        },
+        "2": {
+          "notReadMessageCount": 0
+        }
+      },
+      "id": 1
+    },
+    {
+      "token": "1_2",
+      "list": [
+        {
+          "to": 1,
+          "from": 2,
+          "message": {
+            "type": "image",
+            "fileType": "image",
+            "src": "https://p3-pc-sign.douyinpic.com/obj/tos-cn-i-tsj2vxp0zn/98519678ac9a4102b9577c1b5a8c35ad?x-expires=1990360800&x-signature=c%2Bxu53V6DOqLGe24oncoVo2ercM%3D&from=876277922",
+            "des": "emoji"
+          },
+          "date": "2024-04-28T09:55:19.229Z"
+        },
+        {
+          "to": 1,
+          "from": 2,
+          "message": {
+            "type": "text",
+            "content": "嘿嘿\n"
+          },
+          "date": "2024-04-28T09:55:26.246Z"
+        },
+        {
+          "to": 1,
+          "from": 2,
+          "message": {
+            "type": "text",
+            "content": "嘿嘿\n"
+          },
+          "date": "2024-04-28T09:55:31.209Z"
+        },
+        {
+          "to": 1,
+          "from": 2,
+          "message": {
+            "type": "text",
+            "content": "嘿嘿\n"
+          },
+          "date": "2024-04-28T09:55:31.900Z"
+        },
+        {
+          "to": 1,
+          "from": 2,
+          "message": {
+            "type": "text",
+            "content": "嘿嘿\n"
+          },
+          "date": "2024-04-28T09:55:32.141Z"
+        },
+        {
+          "to": 1,
+          "from": 2,
+          "message": {
+            "type": "text",
+            "content": "嘿嘿\n"
+          },
+          "date": "2024-04-28T09:55:32.374Z"
+        },
+        {
+          "to": 1,
+          "from": 2,
+          "message": {
+            "type": "text",
+            "content": "嘿嘿\n"
+          },
+          "date": "2024-04-28T09:55:32.608Z"
+        },
+        {
+          "to": 1,
+          "from": 2,
+          "message": {
+            "type": "text",
+            "content": "嘿嘿\n"
+          },
+          "date": "2024-04-28T09:55:32.825Z"
+        },
+        {
+          "to": 1,
+          "from": 2,
+          "message": {
+            "type": "text",
+            "content": "嘿嘿\n"
+          },
+          "date": "2024-04-28T09:55:33.025Z"
+        },
+        {
+          "to": 2,
+          "from": 1,
+          "message": {
+            "type": "image",
+            "fileType": "image",
+            "src": "https://p3-pc-sign.douyinpic.com/obj/tos-cn-i-tsj2vxp0zn/de42acc021244714b90a4e07367b4fc3?x-expires=1990360800&x-signature=Agnr84Ok3%2BQrYP7Ad%2Bwg%2FIpLOL4%3D&from=876277922",
+            "des": "emoji"
+          },
+          "date": "2024-04-28T10:03:00.406Z"
+        },
+        {
+          "to": 2,
+          "from": 1,
+          "message": {
+            "type": "text",
+            "content": "1\n"
+          },
+          "date": "2024-04-28T11:00:58.722Z"
+        },
+        {
+          "to": 1,
+          "from": 2,
+          "message": {
+            "type": "text",
+            "content": "2\n"
+          },
+          "date": "2024-04-28T11:01:29.564Z"
+        },
+        {
+          "to": 1,
+          "from": 2,
+          "message": {
+            "type": "text",
+            "content": "3\n"
+          },
+          "date": "2024-04-28T11:01:35.986Z"
+        },
+        {
+          "to": 1,
+          "from": 2,
+          "message": {
+            "type": "text",
+            "content": "4\n"
+          },
+          "date": "2024-04-28T11:01:39.976Z"
+        },
+        {
+          "to": 2,
+          "from": 1,
+          "message": {
+            "type": "text",
+            "content": "234\n"
+          },
+          "date": "2024-04-28T11:23:58.115Z"
+        },
+        {
+          "to": 2,
+          "from": 1,
+          "message": {
+            "type": "text",
+            "content": "fsfds\n"
+          },
+          "date": "2024-04-28T11:24:07.798Z"
+        },
+        {
+          "to": 2,
+          "from": 1,
+          "message": {
+            "type": "image",
+            "fileType": "image",
+            "src": "https://p3-pc-sign.douyinpic.com/obj/tos-cn-i-tsj2vxp0zn/25c16ad72e7043008a1c21e7786e7899?x-expires=1990360800&x-signature=JliuXEa7BXfzpRfeTxlIHwRsSyU%3D&from=876277922",
+            "des": "emoji"
+          },
+          "date": "2024-04-28T11:35:21.540Z"
+        },
+        {
+          "to": 1,
+          "from": 2,
+          "message": {
+            "type": "image",
+            "fileType": "image",
+            "src": "https://p3-pc-sign.douyinpic.com/obj/tos-cn-i-tsj2vxp0zn/35eb36a61af34118bf4744ef99a8271e?x-expires=1990360800&x-signature=gRzRjlIANX1oqFl8tU1ZbhjZ5Kw%3D&from=876277922",
+            "des": "emoji"
+          },
+          "date": "2024-04-28T11:35:25.873Z"
+        },
+        {
+          "to": 2,
+          "from": 1,
+          "message": {
+            "type": "text",
+            "content": "111\n"
+          },
+          "date": "2024-04-28T11:55:07.443Z"
+        },
+        {
+          "to": 1,
+          "from": 2,
+          "message": {
+            "type": "text",
+            "content": "11\n"
+          },
+          "date": "2024-04-28T11:55:29.965Z"
+        }
+      ],
+      "lastMessage": {
+        "to": 1,
+        "from": 2,
+        "message": {
+          "type": "text",
+          "content": "11\n"
+        },
+        "date": "2024-04-28T11:55:29.965Z"
+      },
+      "user": {
+        "1": {
+          "notReadMessageCount": 0
+        },
+        "2": {
+          "notReadMessageCount": 0
+        }
+      },
+      "id": 2
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

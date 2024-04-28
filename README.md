@@ -1,38 +1,59 @@
-# J_Websocket
+# j_websocket
 一款可以让你快速开发websocket及时通讯功能的前后端服务库
 
 [>>>Github<<<](https://github.com/1154395404/j_socket)
 ## 目录
 
-* [特性](#特性)
-* [安装](#安装)
-* [API](#api用法)
-    * [浏览器环境]()
-        * [实例化](#实例化_b)
-        * [监听websocket是否成功连接](#监听websocket是否成功连接)
-        * [监听websocket是否连接失败](#监听websocket是否连接失败)
-        * [监听websocket是否断联](#监听websocket是否断联)
-        * [向后端发送消息](#向后端发送消息)
-        * [向后端发送请求 类似于http请求](#向后端发送请求-类似于http请求)
-        * [监听发送来的Node消息](#监听发送来的node消息)
-        * [请求拦截器](#请求拦截器)
-        * [响应拦截器](#响应拦截器)
-        * [心跳监听](#心跳监听)
-        * [断开连接](#断开连接)
-        * [重新连接](#重新连接)
-    * [Node环境]()
-      * [实例化](#实例化_c)
-      * [开启websocket服务](#开启websocket服务)
-      * [use中间件](#use中间件)
-      * [有用户加入了连接](#有用户加入了连接)
-      * [监听前端发来的消息](#监听前端发来的消息)
-      * [全局广播](#全局广播)
-      * [断开连接](#断开连接)
-* [案例](#案例)
-  * [构建一个基础的websocket服务](#构建一个基础的websocket服务)
-  * [发送与响应一个 类似http请求响应的 websocket消息](#发送与响应一个-类似http请求响应的-websocket消息)
-  * [利用拦截器 与 中间件 实现一个 jwt 用户鉴权](#利用拦截器-与-中间件-实现一个-jwt-用户鉴权)
-* [实战](#实战)
+- [j\_websocket](#j_websocket)
+  - [目录](#目录)
+  - [特性](#特性)
+    - [浏览器环境](#浏览器环境)
+    - [Node环境](#node环境)
+  - [安装](#安装)
+    - [浏览器环境](#浏览器环境-1)
+      - [使用npm方式](#使用npm方式)
+      - [script 引入](#script-引入)
+    - [Node环境](#node环境-1)
+      - [使用nmp方式](#使用nmp方式)
+  - [API用法](#api用法)
+    - [浏览器环境](#浏览器环境-2)
+      - [实例化\_b](#实例化_b)
+      - [监听websocket是否成功连接](#监听websocket是否成功连接)
+      - [监听websocket是否连接失败](#监听websocket是否连接失败)
+      - [监听websocket是否断联](#监听websocket是否断联)
+      - [向后端发送消息](#向后端发送消息)
+      - [向后端发送请求 类似于http请求](#向后端发送请求-类似于http请求)
+      - [监听发送来的Node消息](#监听发送来的node消息)
+      - [请求拦截器](#请求拦截器)
+      - [响应拦截器](#响应拦截器)
+      - [心跳监听](#心跳监听)
+      - [断开连接](#断开连接)
+      - [重新连接](#重新连接)
+    - [Node环境](#node环境-2)
+      - [实例化\_c](#实例化_c)
+      - [开启websocket服务](#开启websocket服务)
+      - [use中间件](#use中间件)
+      - [有用户加入了连接](#有用户加入了连接)
+      - [监听前端发来的消息](#监听前端发来的消息)
+      - [全局广播](#全局广播)
+      - [断开连接](#断开连接-1)
+  - [案例](#案例)
+    - [构建一个基础的websocket服务](#构建一个基础的websocket服务)
+    - [发送与响应一个 类似http请求响应的 websocket消息](#发送与响应一个-类似http请求响应的-websocket消息)
+    - [利用拦截器 与 中间件 实现一个 jwt 用户鉴权](#利用拦截器-与-中间件-实现一个-jwt-用户鉴权)
+  - [实战](#实战)
+    - [在线聊天室项目](#在线聊天室项目)
+    - [线上项目](#线上项目)
+    - [项目介绍](#项目介绍)
+    - [前端](#前端)
+      - [运行](#运行)
+      - [技术栈](#技术栈)
+      - [技术要点](#技术要点)
+    - [后端](#后端)
+      - [运行](#运行-1)
+      - [技术栈](#技术栈-1)
+      - [技术要点](#技术要点-1)
+    - [截图](#截图)
 
 ## 特性
 ### 浏览器环境
@@ -52,8 +73,8 @@ npm install j_websocket
 ```
 #### script 引入
 ```html
-<!--下载./lib/j_socket_front.js 文件-->
-<script src="./lib/j_socket_front.js"></script>
+<!--下载./client/index.umd.js 文件-->
+<script src="./client/index.umd.js"></script>
 ```
 
 
@@ -69,7 +90,7 @@ npm install j_websocket
 #### 实例化_b
 ```javascript
 // npm 方式
-import Socket from 'j_websocket'
+import Socket from 'j_websocket/client'
 const socket = new Socket('http://127.0.0.1')// Node后端监听的ip地址
 // script 引入
 const socket = new J_Websocket('http://127.0.0.1')
@@ -204,9 +225,8 @@ socket.reconnect()
 ### Node环境
 #### 实例化_c
 ```javascript
-const ws = require('ws') //引入原生ws 模块
-const Socket = require('j_websocket')// 引入j_webocket 模块
-const socket = new Socket(ws)
+const Socket = require('j_websocket/server')// 引入j_websocket 模块
+const socket = new Socket()
 ```
 #### 开启websocket服务
 ```javascript
@@ -271,7 +291,7 @@ socket.disconnect((options)=>{
 ### 构建一个基础的websocket服务
 前端
 ```javascript
-import Socket from 'j_websocket'
+import Socket from 'j_websocket/client'
 const socket = new Socket('http://127.0.0.1')
 const subscribeonOnline=socket.on('onOnline',(data)=>{
     // data {msg:'后端收到了 青栀上线 的请求'}
@@ -280,9 +300,9 @@ socket.emit('online',{msg:'我 青栀 上线啦'})
 ```
 后端
 ```javascript
-const ws = require('ws')
-const Socket = require('j_websocket')
-const socket = new Socket(ws)
+
+const Socket = require('j_websocket/server')
+const socket = new Socket()
 socket.on('online',(data, options)=>{
     // data {msg:'我 青栀 上线啦'}
     options.emit('onOnline',{msg:'后端收到了 青栀上线 的请求'})
@@ -310,7 +330,7 @@ socket.on('getList',(data, options)=>{
 前端 
 ```javascript
 //socket.js
-import Socket from 'j_websocket'
+import Socket from 'j_websocket/client'
 import store from '@/store'
 import router from '@/router'
 const socket = new Socket('http://127.0.0.1')
@@ -354,9 +374,9 @@ module.exports = {
     }
 }
 // socket.js
-const ws = require('ws')
-const Socket = require('j_websocket')
-const socket = new Socket(ws)
+
+const Socket = require('j_websocket/server')
+const socket = new Socket()
 const jwt = require('jwt.js')
 socket.use((data, options, next) => {
     const token = data.authorization?.split(' ')[1]
@@ -391,7 +411,7 @@ socket.listen(80, (port) => {
 ### 项目介绍
 一款类似微信聊天的 在线聊天项目
 
-代码在 example 文件夹里
+代码在 `packages/demo` 文件夹里
 
 ### 前端
 #### 运行

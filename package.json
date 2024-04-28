@@ -1,10 +1,22 @@
 {
   "name": "j_websocket",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "一款可以快速现实socket通讯的库",
+  "author": "青栀",
+  "license": "ISC",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "pnpm  -F server -F client build",
+    "dev": "pnpm  -F server -F client dev",
+    "release": "release-it",
+    "prepare": "husky",
+    "commit": "git add . && git-cz",
+    "demo-fe": "pnpm -F chatroom-front serve",
+    "demo-rd": "pnpm -F chatroom-back start"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
   },
   "keywords": [
     "websocket",
@@ -12,12 +24,52 @@
     "socket",
     "即时通讯"
   ],
-  "main": "lib/index.js",
-  "module": "lib/index.mjs",
-  "browser": {
-    "./lib/index.js": "./lib/index.browser.js",
-    "./lib/index.mjs": "./lib/index.browser.mjs"
+  "files": [
+    "server",
+    "client"
+  ],
+  "exports": {
+    "./server": {
+      "import": "./server/index.mjs",
+      "require": "./server/index.js",
+      "types": "./server/index.d.ts",
+      "dir": "./server"
+    },
+    "./client": {
+      "import": "./client/index.mjs",
+      "require": "./client/index.js",
+      "browser": "./client/index.umd.js",
+      "types": "./client/index.d.ts",
+      "dir": "./client"
+    }
   },
-  "author": "青栀",
-  "license": "ISC"
+  "devDependencies": {
+    "@commitlint/cli": "^19.2.2",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@release-it/conventional-changelog": "^8.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/eslint-plugin-prettier": "^3.1.3",
+    "@types/node": "^20.12.7",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "commitizen": "^4.3.0",
+    "cz-git": "^1.9.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "release-it": "17.0.0",
+    "rollup": "^4.16.4",
+    "rollup-plugin-delete": "^2.0.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18.20.2",
+    "pnpm": ">=8.15.7"
+  }
 }
