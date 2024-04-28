@@ -1,6 +1,6 @@
 {
   "name": "j_websocket",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "一款可以快速现实socket通讯的库",
   "license": "ISC",
   "author": {
